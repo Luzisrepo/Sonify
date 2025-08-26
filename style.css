@@ -1,0 +1,283 @@
+:root {
+    --tp-base-background-color: #2f231d;
+    --tp-base-shadow-color: rgba(31, 24, 20, 0.2);
+    --tp-button-background-color: #f5f1f0;
+    --tp-button-background-color-active: #fbfaf9;
+    --tp-button-background-color-focus: #f7f4f3;
+    --tp-button-background-color-hover: #f3efed;
+    --tp-button-foreground-color: #2f231d;
+    --tp-container-background-color: hsla(20, 20%, 95%, 0.1);
+    --tp-container-background-color-active: hsla(20, 20%, 95%, 0.25);
+    --tp-container-background-color-focus: hsla(20, 20%, 95%, 0.2);
+    --tp-container-background-color-hover: hsla(20, 20%, 95%, 0.15);
+    --tp-container-foreground-color: #f5f1f0;
+    --tp-groove-foreground-color: hsla(20, 20%, 95%, 0.1);
+    --tp-input-background-color: hsla(20, 20%, 95%, 0.1);
+    --tp-input-background-color-active: hsla(20, 20%, 95%, 0.25);
+    --tp-input-background-color-focus: hsla(20, 20%, 95%, 0.2);
+    --tp-input-background-color-hover: hsla(20, 20%, 95%, 0.15);
+    --tp-input-foreground-color: #f5f1f0;
+    --tp-label-foreground-color: hsla(20, 20%, 95%, 0.7);
+    --tp-monitor-background-color: rgba(47, 35, 30, 0.2);
+    --tp-monitor-foreground-color: hsla(20, 20%, 95%, 0.7);
+}
+
+*,
+::after,
+::before {
+    border-style: solid;
+    border-width: 0;
+    box-sizing: border-box;
+}
+
+* {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+    align-items: center;
+    background: #211814;
+    color: #f6f2f0;
+    display: grid;
+    font-family: Arial, sans-serif;
+    justify-items: center;
+    line-height: 1.5;
+    margin: 0;
+    min-height: 100vh;
+    place-items: center;
+    width: 100%;
+}
+
+canvas {
+    display: block;
+    margin: 4rem 0;
+    position: relative;
+    width: calc(100vmin - 4rem);
+}
+
+.alert-box {
+    animation: popIn .3s ease-out forwards;
+    background-color: rgba(33, 24, 20, .75);
+    border-radius: .5rem;
+    color: #f6f2f0;
+    font-size: .875rem;
+    font-weight: 300;
+    left: 50%;
+    letter-spacing: .025em;
+    line-height: 1.3;
+    padding: 1rem;
+    position: fixed;
+    text-align: center;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    width: -moz-max-content;
+    width: max-content;
+    z-index: 1000;
+}
+
+.alert-box.out {
+    animation: popOut .2s ease-in forwards;
+}
+
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes popOut {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0);
+    }
+}
+
+.button {
+    align-items: center;
+    background-color: #211814;
+    border: .0625rem solid;
+    color: #f6f2f0;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: inherit;
+    justify-content: center;
+    min-height: 2rem;
+    min-width: 4rem;
+    pointer-events: auto;
+    position: relative;
+    touch-action: manipulation;
+    transition: all .2s ease-in-out;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    width: -moz-max-content;
+    width: max-content;
+}
+
+.button:before {
+    content: "";
+    display: inline-block;
+    height: 1rem;
+    vertical-align: middle;
+}
+
+.button .text {
+    display: inline-flex;
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: .025em;
+    line-height: normal;
+    padding: .25rem .5rem;
+    pointer-events: none;
+    text-align: center;
+    text-transform: uppercase;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    width: auto;
+}
+
+.button:focus-visible {
+    background-color: #f6f2f0;
+    color: #211814;
+    outline: none;
+}
+
+.button:disabled {
+    cursor: not-allowed;
+}
+
+.button:active {
+    background-color: #f6f2f0;
+    color: #211814;
+}
+
+.tp-demo-thumbnails {
+    display: grid;
+    gap: .1875rem;
+    grid-gap: .1875rem;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 0 .25rem .1875rem;
+    width: 100%;
+}
+
+.tp-demo-thumbnail {
+    align-items: center;
+    aspect-ratio: 1;
+    background-color: var(--cnt-bg);
+    border-radius: .25rem;
+    cursor: pointer;
+    display: grid;
+    height: auto;
+    justify-items: center;
+    overflow: hidden;
+    place-items: center;
+    width: 100%;
+}
+
+.tp-demo-thumbnail:after {
+    aspect-ratio: 1;
+    border: .125rem solid transparent;
+    border-radius: .25rem;
+    content: "";
+    display: block;
+    grid-area: 1/-1;
+    pointer-events: none;
+    position: relative;
+    transition: border .3s;
+    width: 100%;
+}
+
+.tp-demo-thumbnail:active:after {
+    border: .125rem solid var(--cnt-fg);
+}
+
+.tp-demo-thumbnail img {
+    border-radius: .25rem;
+    display: block;
+    grid-area: 1/-1;
+    height: auto;
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 100%;
+}
+
+.resources-layer {
+    bottom: 0;
+    display: block;
+    position: fixed;
+    right: 0;
+    z-index: 1000;
+}
+
+.resources {
+    background: rgba(33, 24, 20, .75);
+    display: grid;
+    font-size: .6875rem;
+    font-weight: 300;
+    grid-auto-flow: column;
+    line-height: 1.3;
+    padding: .5rem;
+    pointer-events: auto;
+}
+
+.resources a {
+    align-content: center;
+    display: grid;
+    justify-content: center;
+    padding: 0 .5rem;
+    place-content: center;
+    transition: color .2s ease-in-out;
+}
+
+.resources a,
+.resources a:visited {
+    color: rgba(246, 242, 240, .75);
+}
+
+.resources a:active {
+    color: #f6f2f0;
+}
+
+.resources a:focus-visible {
+    color: #f6f2f0;
+    outline: none;
+}
+
+.resources a:not(:first-child) {
+    border-inline-start: .0625rem solid currentColor;
+}
+
+@media (hover:hover) and (pointer:fine) {
+    .button:hover:not(:disabled) {
+        background-color: #f6f2f0;
+        color: #211814;
+    }
+
+    .tp-demo-thumbnail:hover:not(:disabled):after {
+        border: .125rem solid var(--cnt-fg);
+    }
+
+    .resources a:active:not(:hover),
+    .resources a:hover {
+        color: #f6f2f0;
+    }
+}
